@@ -8,7 +8,7 @@ COPY . .
 # Package stage
 #
 FROM openjdk:11-jdk-slim
-COPY ./app .
+COPY --from=build /target/gold-loan-app.jar gold-loan-app.jar
 RUN ./mvnw clean install -Pprod
 WORKDIR /target
 CMD ["java","-jar","gold-loan-app.jar"]
