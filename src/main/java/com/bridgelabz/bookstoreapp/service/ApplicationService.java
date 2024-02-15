@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.bookstoreapp.dto.ApplicationDTO;
+import com.bridgelabz.bookstoreapp.dto.TransactionDTO;
 import com.bridgelabz.bookstoreapp.exception.BookStoreException;
 import com.bridgelabz.bookstoreapp.model.ApplicationModel;
 import com.bridgelabz.bookstoreapp.model.CustomerModel;
@@ -29,6 +30,7 @@ public class ApplicationService implements IApplicationService {
 			ApplicationModel applicationModel = new ApplicationModel(applicationDTO);
 			applicationModel.setCustomer(customerModel.get());
 			applicationModel.setLoanStatus("active");
+			applicationModel.setBalanceAmount(applicationDTO.getLoanAmount());
 			applicationRepository.save(applicationModel);
 			applicationId = applicationModel.getApplicationId();
 		}
@@ -57,4 +59,5 @@ public class ApplicationService implements IApplicationService {
 		} else
 			throw new BookStoreException("ApplicationId: " + id + ", does not exist");
 	}
+	
 }

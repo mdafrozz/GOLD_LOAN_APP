@@ -1,22 +1,14 @@
 package com.bridgelabz.bookstoreapp.service;
 
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bridgelabz.bookstoreapp.dto.ApplicationDTO;
 import com.bridgelabz.bookstoreapp.dto.CustomerDTO;
 import com.bridgelabz.bookstoreapp.exception.BookStoreException;
-import com.bridgelabz.bookstoreapp.model.ApplicationModel;
-import com.bridgelabz.bookstoreapp.model.BookModel;
 import com.bridgelabz.bookstoreapp.model.CustomerModel;
-import com.bridgelabz.bookstoreapp.model.UserModel;
 import com.bridgelabz.bookstoreapp.repository.CustomerRepository;
-import com.bridgelabz.bookstoreapp.util.ImageUtil;
 
 @Service
 public class CustomerService implements ICustomerService{

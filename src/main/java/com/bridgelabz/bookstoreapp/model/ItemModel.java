@@ -41,5 +41,6 @@ public class ItemModel {
     	this.grossWeight = itemDTO.getGrossWeight();
     	this.netWeight = itemDTO.getNetWeight();
     	this.amountPerGm = itemDTO.getAmountPerGm();
+    	this.totalAmt = itemDTO.getTotalAmt();
     }
 }

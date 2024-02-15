@@ -51,9 +51,13 @@ public class ApplicationModel {
     private String itemList;
     private String paymentMode;
     private String remarks;
-    private String processingFees;
-    private String stampDuty;
-    private String disbursedAmount;
+    private long processingFees;
+    private long stampDuty;
+    private long disbursedAmount;
+    @Lob
+    private String transactionList;
+    private long balanceAmount;
+    private Date lastTransactionDate;
     
     public ApplicationModel(ApplicationDTO applicationDTO) {
     	this.loanAmount = applicationDTO.getLoanAmount();
@@ -67,6 +71,8 @@ public class ApplicationModel {
     	this.processingFees = applicationDTO.getProcessingFees();
     	this.stampDuty = applicationDTO.getStampDuty();
     	this.disbursedAmount = applicationDTO.getDisbursedAmount();
+    	this.transactionList = new Gson().toJson(applicationDTO.getTransactionList());
+    	this.lastTransactionDate = applicationDTO.getLastTransactionDate();
      }
     
 }

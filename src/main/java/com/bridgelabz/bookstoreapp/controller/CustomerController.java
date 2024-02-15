@@ -18,11 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.bookstoreapp.dto.CustomerDTO;
 import com.bridgelabz.bookstoreapp.dto.ResponseDTO;
-import com.bridgelabz.bookstoreapp.dto.UserDTO;
-import com.bridgelabz.bookstoreapp.exception.BookStoreException;
-import com.bridgelabz.bookstoreapp.model.BookModel;
 import com.bridgelabz.bookstoreapp.model.CustomerModel;
-import com.bridgelabz.bookstoreapp.model.UserModel;
 import com.bridgelabz.bookstoreapp.repository.CustomerRepository;
 import com.bridgelabz.bookstoreapp.service.ICustomerService;
 

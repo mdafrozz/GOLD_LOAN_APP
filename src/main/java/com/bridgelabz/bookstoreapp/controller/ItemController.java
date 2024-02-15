@@ -56,5 +56,6 @@ public class ItemController {
 	@GetMapping("/getbycustId/{id}")
 	public List<ItemModel> getItemsByCustomerId(@PathVariable int id) {
 		List<ItemModel> itemList= itemService.getItemDataByCustomerId(id);
-		return itemList;	}
+		return itemList;
+	}
 }

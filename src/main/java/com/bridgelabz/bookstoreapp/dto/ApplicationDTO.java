@@ -31,7 +31,9 @@ public class ApplicationDTO {
     private List<Map<String, String>> itemList;
     private String paymentMode;
     private String remarks;
-    private String processingFees;
-    private String stampDuty;
-    private String disbursedAmount;
+    private long processingFees;
+    private long stampDuty;
+    private long disbursedAmount;
+    private List<Map<String, String>> transactionList;
+    private Date lastTransactionDate;
 }

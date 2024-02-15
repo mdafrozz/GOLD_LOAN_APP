@@ -16,4 +16,5 @@ public class ItemDTO {
 	private BigDecimal grossWeight;
 	private BigDecimal netWeight;
 	private int amountPerGm;
+	private long totalAmt;
 }
