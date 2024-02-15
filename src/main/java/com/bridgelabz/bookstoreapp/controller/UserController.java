@@ -64,13 +64,13 @@ public class UserController {
 		return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 	}
 
-	// Get User Data by token
-	@GetMapping("/getby/{token}")
-	public ResponseEntity<ResponseDTO> getUserDetails(@PathVariable String token) {
-		UserModel userModel = iuserService.getUserDataByToken(token);
-		ResponseDTO respDTO = new ResponseDTO("Data with Token retrieved successfully", userModel);
-		return new ResponseEntity<>(respDTO, HttpStatus.OK);
-	}
+//	// Get User Data by token
+//	@GetMapping("/getby/{token}")
+//	public ResponseEntity<ResponseDTO> getUserDetails(@PathVariable String token) {
+//		UserModel userModel = iuserService.getUserDataByToken(token);
+//		ResponseDTO respDTO = new ResponseDTO("Data with Token retrieved successfully", userModel);
+//		return new ResponseEntity<>(respDTO, HttpStatus.OK);
+//	}
 
 	// Get User Data by Email Address
 	@GetMapping("/getbyemail/{email}")

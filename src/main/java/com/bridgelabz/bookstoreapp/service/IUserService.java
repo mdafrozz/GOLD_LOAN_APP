@@ -10,7 +10,7 @@ public interface IUserService {
 
 	public String addUser(UserDTO userDTO);
 
-	public UserModel getUserDataByToken(String token);
+//	public UserModel getUserDataByToken(String token);
 
 	public String loginUser(LoginDTO loginDTO);
 

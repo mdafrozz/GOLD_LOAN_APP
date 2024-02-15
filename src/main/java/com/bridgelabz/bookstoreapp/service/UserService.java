@@ -72,16 +72,16 @@ public class UserService implements IUserService {
 	}
 
 	// Get User Details by Token
-	@Override
-	public UserModel getUserDataByToken(String token) {
-		try {
-			int id = tokenUtil.decodeToken(token);
-			return userRepo.findById(id).stream().filter(data -> data.getUserId() == id).findFirst()
-					.orElseThrow(() -> new BookStoreException("Invalid User/Token"));
-		} catch (Exception e) {
-			throw new BookStoreException("Invalid User/Token");
-		}
-	}
+//	@Override
+//	public UserModel getUserDataByToken(String token) {
+//		try {
+//			int id = tokenUtil.decodeToken(token);
+//			return userRepo.findById(id).stream().filter(data -> data.getUserId() == id).findFirst()
+//					.orElseThrow(() -> new BookStoreException("Invalid User/Token"));
+//		} catch (Exception e) {
+//			throw new BookStoreException("Invalid User/Token");
+//		}
+//	}
 
 	// Get the User Details by Email Address
 	@Override
