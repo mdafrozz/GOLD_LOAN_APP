@@ -1,18 +1,9 @@
 package com.bridgelabz.bookstoreapp.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.List;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -94,44 +85,44 @@ public class ApplicationController {
 			return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 	}
 	
-    @GetMapping("/generate")
-    public ResponseEntity<byte[]> generatePdf() {
-        // Generate PDF using a library (e.g., Apache PDFBox or Flying Saucer)
-        byte[] pdfContent = generatePdfContent();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.builder("attachment").filename("document.pdf").build());
-        return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
-    }
-    
-    private byte[] generatePdfContent() {
-    	try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                PDDocument document = new PDDocument()) {
-
-               // Create a page
-               PDPage page = new PDPage();
-               document.addPage(page);
-
-               // Add content to the page
-               try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
-                   contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
-                   contentStream.beginText();
-                   contentStream.newLineAtOffset(100, 700);
-                   contentStream.showText("Hello, this is a sample PDF generated using Apache PDFBox!");
-                   contentStream.endText();
-               }
-
-               // Save the document to ByteArrayOutputStream
-               document.save(baos);
-               document.close();
-
-               return baos.toByteArray();
-           } catch (IOException e) {
-               // Handle exception
-               e.printStackTrace();
-               return new byte[0];
-           }
-    }
+//    @GetMapping("/generate")
+//    public ResponseEntity<byte[]> generatePdf() {
+//        // Generate PDF using a library (e.g., Apache PDFBox or Flying Saucer)
+//        byte[] pdfContent = generatePdfContent();
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_PDF);
+//        headers.setContentDisposition(ContentDisposition.builder("attachment").filename("document.pdf").build());
+//        return new ResponseEntity<>(pdfContent, headers, HttpStatus.OK);
+//    }
+//    
+//    private byte[] generatePdfContent() {
+//    	try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                PDDocument document = new PDDocument()) {
+//
+//               // Create a page
+//               PDPage page = new PDPage();
+//               document.addPage(page);
+//
+//               // Add content to the page
+//               try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+//                   contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+//                   contentStream.beginText();
+//                   contentStream.newLineAtOffset(100, 700);
+//                   contentStream.showText("Hello, this is a sample PDF generated using Apache PDFBox!");
+//                   contentStream.endText();
+//               }
+//
+//               // Save the document to ByteArrayOutputStream
+//               document.save(baos);
+//               document.close();
+//
+//               return baos.toByteArray();
+//           } catch (IOException e) {
+//               // Handle exception
+//               e.printStackTrace();
+//               return new byte[0];
+//           }
+//    }
 
 }
