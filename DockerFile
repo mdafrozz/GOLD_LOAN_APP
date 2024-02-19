@@ -1,14 +1,1 @@
-#
-# Build stage
-#
-FROM maven:3.8.2-jdk-11 AS build
-COPY . .
 
-#
-# Package stage
-#
-FROM openjdk:11-jdk-slim
-COPY --from=build /target/gold-loan-app.jar gold-loan-app.jar
-RUN ./mvnw clean install -Pprod
-WORKDIR /target
-CMD ["java","-jar","gold-loan-app.jar"]
