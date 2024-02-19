@@ -7,9 +7,6 @@ import java.util.Map;
 
 import javax.validation.constraints.NotNull;
 
-import com.bridgelabz.bookstoreapp.model.ItemModel;
-import com.google.gson.JsonObject;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,5 +32,5 @@ public class ApplicationDTO {
     private long stampDuty;
     private long disbursedAmount;
     private List<Map<String, String>> transactionList;
-    private Date lastTransactionDate;
+    private Date closingDate;
 }

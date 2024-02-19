@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -15,7 +16,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.bridgelabz.bookstoreapp.dto.CustomerDTO;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 public class CustomerModel {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "customerId")
 	private int customerId;
     @CreatedDate
@@ -55,7 +55,7 @@ public class CustomerModel {
 	@Column(length = 1000)
     byte[] photo;
 
-    
+
     public CustomerModel(CustomerDTO customerDTO) {
     	this.firstName = customerDTO.getFirstName();
     	this.lastName = customerDTO.getLastName();

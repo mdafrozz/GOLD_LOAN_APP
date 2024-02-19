@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -31,7 +32,7 @@ import lombok.NoArgsConstructor;
 public class ApplicationModel {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "applicationId")
 	private int applicationId;
 	private String loanStatus;
@@ -56,12 +57,12 @@ public class ApplicationModel {
     private long disbursedAmount;
     @Lob
     private String transactionList;
-    private long balanceAmount;
-    private Date lastTransactionDate;
-    
+    private long closingPrincipal;
+    private Date closingDate;
+
     public ApplicationModel(ApplicationDTO applicationDTO) {
     	this.loanAmount = applicationDTO.getLoanAmount();
-    	this.tenure = applicationDTO.getTenure();	
+    	this.tenure = applicationDTO.getTenure();
     	this.interestRate = applicationDTO.getInterestRate();
     	this.startDate = applicationDTO.getStartDate();
     	this.endDate = applicationDTO.getEndDate();
@@ -72,7 +73,7 @@ public class ApplicationModel {
     	this.stampDuty = applicationDTO.getStampDuty();
     	this.disbursedAmount = applicationDTO.getDisbursedAmount();
     	this.transactionList = new Gson().toJson(applicationDTO.getTransactionList());
-    	this.lastTransactionDate = applicationDTO.getLastTransactionDate();
+    	this.closingDate = applicationDTO.getClosingDate();
      }
-    
+
 }

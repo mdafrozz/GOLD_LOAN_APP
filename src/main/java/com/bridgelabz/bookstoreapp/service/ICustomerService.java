@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.bridgelabz.bookstoreapp.dto.CustomerDTO;
 import com.bridgelabz.bookstoreapp.model.CustomerModel;
-import com.bridgelabz.bookstoreapp.model.UserModel;
 
 public interface ICustomerService {
 

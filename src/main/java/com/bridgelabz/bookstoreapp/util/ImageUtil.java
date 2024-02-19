@@ -22,7 +22,7 @@ public class ImageUtil {
 	            outputStream.close();
 	        } catch (Exception ignored) {
 	        }
-	        return outputStream.toByteArray();		
+	        return outputStream.toByteArray();
 	    }
 
 

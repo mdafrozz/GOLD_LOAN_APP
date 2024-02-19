@@ -2,6 +2,7 @@ package com.bridgelabz.bookstoreapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "_user")
 public class UserModel {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int userId;
 	private String firstName;
 	private String lastName;
@@ -26,7 +27,6 @@ public class UserModel {
 	private String password;
 
 	public UserModel(UserDTO userdto) {
-
 		this.firstName = userdto.getFirstName();
 		this.lastName = userdto.getLastName();
 		this.address = userdto.getAddress();

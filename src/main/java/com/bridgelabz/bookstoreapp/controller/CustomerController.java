@@ -29,10 +29,10 @@ public class CustomerController {
 
 	@Autowired
 	ICustomerService iCustomerService;
-	
+
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	// insert data and generate Token
 	@PostMapping(value = { "/create" })
 	public ResponseEntity<ResponseDTO> AddCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
@@ -61,7 +61,7 @@ public class CustomerController {
 		ResponseDTO responseDTO = new ResponseDTO("User Details with ID: " + id, customerModel);
 		return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 	}
-	
+
 	// Get User Data by ID
 	@GetMapping("/check/{mobileNumber}")
 	public ResponseEntity<ResponseDTO> getUserById(@PathVariable String mobileNumber) {
@@ -74,7 +74,7 @@ public class CustomerController {
 			return new ResponseEntity<>(responseDTO, HttpStatus.OK);
 		}
 	}
-	
+
 	// Search by Book
 	@GetMapping("/search/{name}")
 	public ResponseEntity<ResponseDTO> SearchByName(@PathVariable String name) {

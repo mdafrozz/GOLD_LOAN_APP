@@ -3,9 +3,9 @@ package com.bridgelabz.bookstoreapp.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class ItemModel {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "itemId")
 	private int itemId;
 	private int customerId;
@@ -32,7 +32,7 @@ public class ItemModel {
 	private BigDecimal netWeight;
 	private int amountPerGm;
 	private long totalAmt;
-	
+
     public ItemModel(ItemDTO itemDTO) {
     	this.customerId = itemDTO.getCustomerId();
     	this.itemType = itemDTO.getItemType();

@@ -24,22 +24,22 @@ import com.bridgelabz.bookstoreapp.service.TransactionService;
 public class TransactionController {
 
 	@Autowired TransactionService transactionService;
-	
+
 	// Create new application
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> createVoucher(@RequestBody TransactionDTO transactionDTO){
 			int id = transactionService.createVoucher(transactionDTO);
 			ResponseDTO responseDTO = new ResponseDTO("Voucher Created Successfully..!!!", id);
-			return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);	
+			return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
 	}
-	
+
 	// Get all item data
 	@GetMapping("/getall")
 	public List<TransactionModel> getAllTransactionDetails() {
 		List<TransactionModel> voucherList = transactionService.getAllTransactionData();
 		return voucherList;
 	}
-	
+
 	// Get User Data by Email Address
 	@GetMapping("/getbyAppId/{id}")
 	public List<TransactionModel> getTransactionsByApplicationId(@PathVariable int id) {

@@ -25,10 +25,10 @@ import com.bridgelabz.bookstoreapp.service.ItemService;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
-	
+
 	@Autowired
 	ItemService itemService;
-	
+
 	// insert data and generate Token
 	@PostMapping(value = { "/add" })
 	public ResponseEntity<ResponseDTO> AddCustomer(@Valid @RequestBody ItemDTO itemDTO) {
@@ -43,7 +43,7 @@ public class ItemController {
 		List<ItemModel> itemList = itemService.getAllItemData();
 		return itemList;
 	}
-	
+
 	// Delete item by itemID
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<ResponseDTO> deleteItemDataByID(@PathVariable int id) {
@@ -51,7 +51,7 @@ public class ItemController {
 		ResponseDTO respDTO = new ResponseDTO("Deleted Successfully Id:", response);
 		return new ResponseEntity<>(respDTO, HttpStatus.OK);
 	}
-	
+
 	// Get User Data by Email Address
 	@GetMapping("/getbycustId/{id}")
 	public List<ItemModel> getItemsByCustomerId(@PathVariable int id) {

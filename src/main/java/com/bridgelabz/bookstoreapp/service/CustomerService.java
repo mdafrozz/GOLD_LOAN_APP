@@ -15,7 +15,7 @@ public class CustomerService implements ICustomerService{
 
 	@Autowired
 	CustomerRepository customerRepository;
-	
+
 	// Create Customer
 	@Override
 	public int createCustomer(CustomerDTO customerDTO) {
@@ -23,7 +23,7 @@ public class CustomerService implements ICustomerService{
 		customerRepository.save(customerModel);
 		return customerModel.getCustomerId();
 	}
-	
+
 	// Get all User Details list
 	@Override
 	public List<CustomerModel> getAllCustomersData() {
@@ -43,13 +43,13 @@ public class CustomerService implements ICustomerService{
 		} else
 			throw new BookStoreException("CustomerID: " + id + ", does not exist");
 	}
-	
+
 	// Get customer Data by Name
 	@Override
 	public List<CustomerModel> searchbyName(String name) {
-		List<CustomerModel> customerModel = customerRepository.findAll();
+		List<CustomerModel> customerModel = customerRepository.findByName(name);
 		if (customerModel != null) {
-			return customerRepository.findByName(name);
+			return customerModel;
 		} else
 			throw new BookStoreException("Name: " + name + " is not available");
 	}

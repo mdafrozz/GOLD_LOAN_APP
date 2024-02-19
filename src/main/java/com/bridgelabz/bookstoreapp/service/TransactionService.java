@@ -14,7 +14,7 @@ import com.bridgelabz.bookstoreapp.repository.TransactionRepository;
 
 @Service
 public class TransactionService {
-	
+
 	@Autowired TransactionRepository transactionRepository;
 	@Autowired ApplicationRepository applicationRepository;
 
@@ -23,8 +23,6 @@ public class TransactionService {
 		ApplicationModel applicationModel = applicationRepository.findById(transactionDTO.getApplicationId()).orElse(null);
 		int returnId = 0;
 		if(applicationModel != null) {
-			long balAmt = applicationModel.getBalanceAmount() - transactionDTO.getTransactionAmount();
-			applicationModel.setLastTransactionDate(transactionDTO.getTransactionDate());
 			TransactionModel transactionModel = new TransactionModel(transactionDTO);
 			transactionRepository.save(transactionModel);
 			returnId =  transactionModel.getTransactionId();
@@ -32,7 +30,7 @@ public class TransactionService {
 		return returnId;
 
 	}
-	
+
 	// Get all Item Details list
 	public List<TransactionModel> getAllTransactionData() {
 		List<TransactionModel> transactionModel = transactionRepository.findAll();
@@ -41,7 +39,7 @@ public class TransactionService {
 		} else
 			return transactionModel;
 	}
-	
+
 	// Get the User Details by Email Address
 	public List<TransactionModel> getTransactionDataByApplicationId(int id) {
 		List<TransactionModel> transactionModel= transactionRepository.findByApplicationId(id);
