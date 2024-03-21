@@ -1,5 +1,7 @@
 package com.bridgelabz.bookstoreapp.model;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
@@ -23,18 +26,19 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "customer")
+@Table(name = "customer",  indexes = { @Index(name = "idx_first_name", columnList = "first_name") })
 @EntityListeners(AuditingEntityListener.class)
 public class CustomerModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customerId")
 	private int customerId;
     @CreatedDate
     Date dateCreated;
     @LastModifiedDate
     Date lastUpdated;
+    @Column(name = "first_name")
     String firstName;
     String lastName;
     Date DOB;
@@ -56,7 +60,7 @@ public class CustomerModel {
     byte[] photo;
 
 
-    public CustomerModel(CustomerDTO customerDTO) {
+    public CustomerModel(CustomerDTO customerDTO) throws IOException {
     	this.firstName = customerDTO.getFirstName();
     	this.lastName = customerDTO.getLastName();
     	this.DOB = customerDTO.getDOB();
@@ -73,6 +77,7 @@ public class CustomerModel {
     	this.mobileNumber = customerDTO.getMobileNumber();
     	this.aadharNumber = customerDTO.getAadharNumber();
     	this.panNumber = customerDTO.getPanNumber();
-    	this.photo = customerDTO.getPhoto();
+    	this.photo = Base64.getDecoder().decode(customerDTO.getPhoto());
+
     }
 }

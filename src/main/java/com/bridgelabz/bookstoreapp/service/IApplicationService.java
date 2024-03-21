@@ -15,4 +15,6 @@ public interface IApplicationService {
 	public List<ApplicationModel> getActiveLoans();
 	public List<ApplicationModel> searchbyName(String name);
 	public int closeLoan(ApplicationDTO applicationDTO, int loanId);
+	public String replaceContractVariables(String html, int loanId);
+	public byte[] generatePdfContent(int loanId);
 }

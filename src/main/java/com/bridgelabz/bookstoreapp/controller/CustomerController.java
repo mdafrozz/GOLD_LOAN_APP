@@ -1,5 +1,6 @@
 package com.bridgelabz.bookstoreapp.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class CustomerController {
 
 	// insert data and generate Token
 	@PostMapping(value = { "/create" })
-	public ResponseEntity<ResponseDTO> AddCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
+	public ResponseEntity<ResponseDTO> AddCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws IOException {
 		Optional<CustomerModel> customerModel = customerRepository.findByCustomerMobile(customerDTO.getMobileNumber());
 		if(customerModel.isPresent()) {
 			ResponseDTO responseDTO = new ResponseDTO("Customer Already Exists",400);

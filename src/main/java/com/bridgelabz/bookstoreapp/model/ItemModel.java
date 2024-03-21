@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 import com.bridgelabz.bookstoreapp.dto.ItemDTO;
@@ -17,13 +18,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "items")
+@Table(name = "items",  indexes = { @Index(name = "idx_customer_id", columnList = "customer_id") })
 public class ItemModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "itemId")
 	private int itemId;
+	@Column(name = "customer_id")
 	private int customerId;
 	private String itemType;
 	private String carat;

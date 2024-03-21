@@ -27,4 +27,8 @@ public interface ApplicationRepository extends JpaRepository<ApplicationModel, I
 	// Using custom query
 	@Query(value = "SELECT * FROM application WHERE cust_id = :id", nativeQuery = true)
 	List<ApplicationModel> findByCustomerId(int id);
+	
+	// Using custom query
+	@Query(value = "SELECT item_list FROM application WHERE application_id = :id", nativeQuery = true)
+	List<ApplicationModel> findItemsByApplicationId(int id);
 }

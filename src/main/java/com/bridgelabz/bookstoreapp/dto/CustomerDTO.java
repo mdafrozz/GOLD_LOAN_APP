@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,5 +37,5 @@ public class CustomerDTO {
 	private Date nomineeDob;
 	private String nomineeAddress;
 	private String nomineeMobile;
-	private byte[] photo;
+	private String photo;
 }

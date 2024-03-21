@@ -1,5 +1,6 @@
 package com.bridgelabz.bookstoreapp.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class CustomerService implements ICustomerService{
 
 	// Create Customer
 	@Override
-	public int createCustomer(CustomerDTO customerDTO) {
+	public int createCustomer(CustomerDTO customerDTO) throws IOException {
 		CustomerModel customerModel = new CustomerModel(customerDTO);
 		customerRepository.save(customerModel);
 		return customerModel.getCustomerId();

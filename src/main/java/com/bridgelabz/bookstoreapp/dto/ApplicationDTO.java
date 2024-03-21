@@ -33,4 +33,6 @@ public class ApplicationDTO {
     private long disbursedAmount;
     private List<Map<String, String>> transactionList;
     private Date closingDate;
+	private String openingPhoto;
+	private String closingPhoto;
 }
